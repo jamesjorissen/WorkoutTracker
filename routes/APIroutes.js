@@ -2,9 +2,9 @@ const router = require("express").Router();
 const db = require("../Models/workout");
 
 router.get("/workouts", (req, res) => {
-    db.find({}).sort({ date: -1 }).then(workout => {
-        console.log(workout)
-        res.json(workout);
+    db.find({}).sort({ date: -1 }).then(workoutDB => {
+        console.log(workoutDB)
+        res.json(workoutDB);
     }).catch(err => {
         res.status(400).json(err);
     });
@@ -35,8 +35,8 @@ router.put("/workouts/:id", function (req, res) {
 });
 
 router.get("/workouts/range", (req, res) => {
-    db.Workout.find({}).then(workout => {
-        res.json(workout);
+    db.Workout.find({}).then(workoutDB => {
+        res.json(workoutDB);
     }).catch(err => {
         res.status(400).json(err);
     });
