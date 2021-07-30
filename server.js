@@ -1,7 +1,7 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
-const APIRoutes = require("./routes/APIroutes");
+const apiRoutes = require("./routes/APIroutes");
 const htmlRoutes = require("./routes/htmlroutes")
 const PORT = process.env.PORT || 3001;
 
@@ -12,10 +12,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.use("/api", APIRoutes);
+app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutDB", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
