@@ -7,7 +7,7 @@ const workoutSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    exercises: [
+    exercise: [
         {
             type: {
                 type: String,
@@ -47,14 +47,14 @@ const workoutSchema = new Schema({
 );
 
 workoutSchema.virtual("totalDuration").get(function () {
-    return this.exercises.reduce((total, exercise) => {
-        return total + exercise.duration;
+    return this.exercise.reduce((total, exercises) => {
+        return total + exercises.duration;
     }, 0);
 });
 
 workoutSchema.virtual("totalDistance").get(function () {
-    return this.exercises.reduce((total, exercise) => {
-        return total + exercise.distance;
+    return this.exercise.reduce((total, exercises) => {
+        return total + exercises.distance;
     }, 0);
 });
 
