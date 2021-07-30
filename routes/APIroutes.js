@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const express = require("express");
 const db = require("../Models/workout");
 
 router.get("/workouts", (req, res) => {
-    db.find({}).sort({ date: -1 }).then(WorkoutsDB => {
-        console.log(workoutsDB)
-        res.json(workoutsDB);
+    db.find({}).sort({ date: -1 }).then(workout => {
+        console.log(workout)
+        res.json(workout);
     }).catch(err => {
         res.status(400).json(err);
     });
@@ -13,8 +12,8 @@ router.get("/workouts", (req, res) => {
 
 router.post("/workouts", (req, res) => {
     db.create({})
-        .then(workoutsDB => {
-            res.json(workoutsDB)
+        .then(workoutDB => {
+            res.json(workoutDB)
         })
         .catch(err => {
             res.status(400).json(err)
@@ -27,8 +26,8 @@ router.put("/workouts/:id", function (req, res) {
         { $push: { exercise: req.body } },
         { new: true }
     )
-        .then(workoutsDB => {
-            res.json(workoutsDB);
+        .then(workoutDB => {
+            res.json(workoutDB);
         })
         .catch(err => {
             res.json(err);
@@ -36,8 +35,8 @@ router.put("/workouts/:id", function (req, res) {
 });
 
 router.get("/workouts/range", (req, res) => {
-    db.find({}).then(workoutsDB => {
-        res.json(workoutsDB);
+    db.Workout.find({}).then(workout => {
+        res.json(workout);
     }).catch(err => {
         res.status(400).json(err);
     });
