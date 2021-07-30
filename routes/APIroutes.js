@@ -1,6 +1,7 @@
+const express = require("express");
 const router = express.Router();
 const db = require("../Models/workout");
-const express = require("express");
+
 
 router.get("/workouts", (req, res) => {
     db.find({}).sort({ date: -1 }).then(workoutDB => {
